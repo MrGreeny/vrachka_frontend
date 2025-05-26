@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;500&display=swap');
+
+/* Custom Properties */
+:root {
+  --color-primary: #2c1752;
+  --color-secondary: #7b2cbf;
+  --color-accent: #9d4edd;
+  --color-background: #0a0118;
+  --color-surface: #1a0b2e;
+  --color-text: #e9d8fd;
+  --color-text-secondary: #c4b5fd;
+  --gradient-mystical: linear-gradient(135deg, #2c1752, #7b2cbf, #9d4edd);
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+/* Mystical Elements */
+.mystical-card {
+  background: var(--color-surface);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(157, 78, 221, 0.25);
+  }
+}
+
+.mystical-button {
+  background: var(--gradient-mystical);
+  color: var(--color-text);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+}
+
+/* Ethereal Effects */
+.ethereal-bg {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}

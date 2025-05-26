@@ -1,0 +1,120 @@
+.app-container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.mystical-header {
+  padding: 2rem;
+  text-align: center;
+  background: var(--color-surface);
+  box-shadow: 0 4px 30px rgba(157, 78, 221, 0.1);
+
+  h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    background: var(--gradient-mystical);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+
+  .nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-mystical);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: var(--color-accent);
+      
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.mystical-card {
+  background: var(--color-surface);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(157, 78, 221, 0.25);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-mystical);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+}
+
+.mystical-footer {
+  text-align: center;
+  padding: 2rem;
+  background: var(--color-surface);
+  margin-top: auto;
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+}
