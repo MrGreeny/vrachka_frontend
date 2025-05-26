@@ -1,0 +1,45 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <i class="fas fa-crystal-ball"></i>
+    <h2>Mystical Guide</h2>
+  </div>
+
+  <div class="chat-messages" #scrollContainer>
+    @for (message of messages; track message.timestamp) {
+      <div class="message-container" [class.user-message]="message.sender === 'user'" [class.ai-message]="message.sender === 'ai'">
+        <div class="message-content">
+          <div class="message-text">{{ message.content }}</div>
+          <div class="message-timestamp">{{ message.timestamp | date:'shortTime' }}</div>
+        </div>
+      </div>
+    }
+    @if (isTyping) {
+      <div class="message-container ai-message">
+        <div class="message-content">
+          <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input">
+    <input 
+      type="text" 
+      [(ngModel)]="newMessage" 
+      (keyup.enter)="sendMessage()"
+      placeholder="Ask the mystical guide..."
+      [disabled]="isTyping"
+    >
+    <button 
+      (click)="sendMessage()" 
+      [disabled]="isTyping || !newMessage.trim()"
+      class="send-button"
+    >
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
