@@ -4,7 +4,7 @@
     <h2>Mystical Guide</h2>
   </div>
 
-  <div class="chat-messages" #scrollContainer>
+  <div class="messages-area">
     @for (message of messages; track message.timestamp) {
       <div class="message-container" [class.user-message]="message.sender === 'user'" [class.ai-message]="message.sender === 'ai'">
         <div class="message-content">
@@ -26,20 +26,40 @@
     }
   </div>
 
-  <div class="chat-input">
-    <input 
-      type="text" 
-      [(ngModel)]="newMessage" 
-      (keyup.enter)="sendMessage()"
-      placeholder="Ask the mystical guide..."
-      [disabled]="isTyping"
-    >
-    <button 
-      (click)="sendMessage()" 
-      [disabled]="isTyping || !newMessage.trim()"
-      class="send-button"
-    >
-      <i class="fas fa-paper-plane"></i>
-    </button>
+  <div class="input-area">
+    <div class="prompt-suggestions" *ngIf="showSuggestions && !newMessage">
+      <div class="suggestions-title">
+        <i class="fas fa-magic"></i>
+        Ask me about...
+      </div>
+      <div class="suggestions-grid">
+        <button *ngFor="let suggestion of promptSuggestions"
+                (click)="usePromptSuggestion(suggestion)"
+                class="suggestion-button"
+                [attr.data-category]="suggestion.category">
+          <i class="fas {{ suggestion.icon }}"></i>
+          <span>{{ suggestion.text }}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="input-wrapper">
+      <input 
+        type="text" 
+        [(ngModel)]="newMessage" 
+        (keyup.enter)="sendMessage()"
+        (focus)="onInputFocus()"
+        (blur)="onInputBlur()"
+        placeholder="Ask the mystical guide..."
+        [disabled]="isTyping"
+      >
+      <button 
+        (click)="sendMessage()" 
+        [disabled]="isTyping || !newMessage.trim()"
+        class="send-button"
+      >
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
   </div>
 </div>
